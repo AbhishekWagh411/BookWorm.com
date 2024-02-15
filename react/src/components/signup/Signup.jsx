@@ -1,59 +1,122 @@
-import React from "react";
-import "./Signup.css";
+import React from 'react';
+import './Signup.css';
 import { useState } from "react";
-
-// import user_icon from "../assets/person.png";
-import email_icon from "../assets/email.png";
-import password_icon from "../assets/password.png";
-
+import { useNavigate } from 'react-router-dom';
+import user_icon from '../assets/person.png';
+import email_icon from '../assets/email.png';
+import password_icon from '../assets/password.png';
 export const Signup = () => {
-  const [loginDetails, setLogInDetails] = useState({});
+
+  const [signupDetails, setSignUpDetails] = useState({
+    first_name: "",
+    last_name: "",
+    country: "",
+    city: "",
+    email: "",
+    password: "",
+    phoneno:"",
+    confirmPassword:""
+  });
   const handleChange = (event) => {
-    setLogInDetails((values) => ({ ...values, [event.target.name]: event.target.value }));
+    const { name, value } = event.target;
+    setSignUpDetails((prevDetails) => ({ ...prevDetails, [name]: value }));
   };
+  const navigate=useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
-    let details = JSON.stringify(loginDetails);
-    // document.write("Hello World");
-    fetch("http://localhost:8080/api/Login", {
+    const details = JSON.stringify(signupDetails);
+    
+    if (signupDetails.password === signupDetails.confirmPassword) {
+    fetch("http://localhost:8080/api/SignUp", {
       method: "POST",
       headers: { "Content-type": "application/json" },
       body: details,
-    }).then((response)=>{
-      console.log(response);
-     return response.json();
-    })
-  .then((result) => {
-    console.log("Response:", result);
-    console.log("Type of response:", typeof result);
-    if (result) {
-        console.log("Login successful!");
-        alert("Login Success!!"); //redirect Home page here
-    } else {
-        console.log("Login failed!");
-        alert("Login Failed!!");
+    }).then((data) => {
+        console.log(data);
+        console.log("Signup successful!");
+        alert("Signup Success!!");
+        
+        
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        console.log("Signup failed!");
+        alert("Signup Failed!!");
+      });
+      
     }
-});
-    // navigate("");
+    else{
+        alert('Passwords do not match');
+    }
+    navigate("Login");
   };
+  
   return (
     <div className="signup">
-      <div className = "header">
-      <h1 className ="text">LOGIN</h1>
-      <form className="inputs" onSubmit={handleSubmit}>
-        {/* <img src={user_icon} alt="" />
-        <input className="input"type="text" placeholder="Name"/> */}
-        <img src={email_icon} alt="" />
-        <input className="input"type="email" name="email" placeholder= "Email Id"onChange={handleChange}/>
-        <img src={password_icon} alt="" />
-        <input className="input" type="password" name="password" placeholder= "Password"onChange={handleChange}/>
-        <br/>
-        <input type="submit" value="LogIn" className="submit" />
-        <br/>
-        <input type="submit" value="SignUp" className="submit" />
-       
+      <form onSubmit={handleSubmit}>
+        <div className="header1">
+          <div className="text">Sign Up</div>
+          <div className="underline"></div>
+        </div>
+        <div className="inputs">
+          <div className="input">
+            <img src={user_icon} alt="" />
+            <input
+              type="text" placeholder="First Name" name="first_name" onChange={handleChange} required/>
+          </div>
+
+          <div className="input">
+            <img src={user_icon} alt="" />
+            <input
+              type="text" placeholder="Last Name" name="last_name" onChange={handleChange} required
+            />
+          </div>
+
+          <div className="input">
+            <img src={user_icon} alt="" />
+            <input
+              type="text" placeholder="Country" name="country" onChange={handleChange} required
+            ></input>
+          </div>
+
+          <div className="input">
+            <img src={user_icon} alt="" />
+            <input
+              type="text" placeholder="City" name="city" onChange={handleChange} required
+            />
+          </div>
+          <div className="input">
+            <img src={email_icon} alt="" />
+            <input
+              type="email" placeholder="Email Id" name="email" onChange={handleChange} required
+            />
+          </div>
+          
+          <div className="input">
+            <img src={user_icon} alt="" />
+            <input type="text" name="phone" onChange={handleChange} placeholder="Phone Number" required />
+          </div>
+
+          <div className="input">
+            <img src={password_icon} alt="" />
+            <input
+              type="password" placeholder="Password" name="password" onChange={handleChange} required
+            />
+          </div>
+        
+          <div className="input">
+            <img scr={password_icon} alt=""/>
+            <input type="password" name="confirmPassword" onChange={handleChange} placeholder="Confirm Password"required/>
+
+          </div>
+          </div>
+
+        <div className="submit-container">
+          <button type="submit" className="submit">
+            Sign Up
+          </button>
+        </div>
       </form>
-    </div>
     </div>
   );
 };

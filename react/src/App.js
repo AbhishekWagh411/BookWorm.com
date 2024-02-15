@@ -1,13 +1,15 @@
-import './App.css';
-import Navbar from './components/Navbar';
+import React from "react";
+import Header from "./components/Header/Header";
+import "./style.css"; // Import your CSS file
+import Footer from "./components/Footer/Footer";
+import HeaderLogin from "./components/Header/Headern";
+import Home from "./components/home/Home"
 
-
-function App() {
-  return (
-    <div className="App">
-      <Navbar />
-    </div>
-  );
-}
+const App = () => {
+  return(
+   <Home/>
+  
+   )
+};
 
 export default App;

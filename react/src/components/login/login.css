@@ -10,7 +10,7 @@
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
 }
 
-.header1 {
+.header {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,7 +23,7 @@
   text-align: center;
   color: #3c009d;
   font-size: 48px;
-  font-weight: 300;
+  font-weight: 700;
 }
 
 .underline {
@@ -36,31 +36,29 @@
 }
 
 .inputs {
-  margin-top: 15px;
+  margin-top: 55px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 25px;
 }
 
 .input {
   display: flex;
   align-items: center;
   margin: auto;
-  width: 380px;
-  height: 60px;
+  width: 480px;
+  height: 80px;
   background: #eaeaea;
   border-radius: 6px;
 }
-
-
 
 .input img{
   margin: 0px 30px;
 }
 
 .input input{
-  height: 30px;
-  width: 300px;
+  height: 50px;
+  width: 400px;
   background: transparent;
   border: none;
   outline: none;
@@ -69,25 +67,22 @@
 }
 
 .forgot-password {
-  display: flex;
-  justify-content: center;
-  margin-top: 10px; /* Adjust as needed */
+  padding-left: 62px;
+  margin-top: 27px;
+  color: #797979;
+  font-size: 18px;
 }
 
 .forgot-password span {
   color: #4c00b4;
   cursor: pointer;
-  margin-left: 5px; /* Add space between "Forgot Password?" and "Click Here!" */
 }
-
 
 .submit-container {
   display: flex;
-  justify-content: center; /* Horizontally center the buttons */
-  margin-top: 20px; /* Add top margin for spacing */
-  
+  gap: 30px;
+  margin: 60px auto;
 }
-
 
 .submit {
   display: flex;
@@ -96,7 +91,7 @@
   background-color: #4c00b4;
   color: #fff;
   font-size: 19px;
-  font-weight: 500;
+  font-weight: 700;
   width: 220px;
   height: 59px;
   border-radius: 50px;
@@ -105,4 +100,4 @@
 
 .submit:hover {
   background-color: #3c009d;
-}
+  }

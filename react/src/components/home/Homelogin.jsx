@@ -1,16 +1,16 @@
 import React from 'react'
-import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 import Slider from '../carousel/Slider'
+import HeaderLogin from '../Header/Headern'
 
 
-const Home = () => {
+const Homelogin = () => {
   return (
     <div>
-      <Header />
+      <HeaderLogin />
         <Footer />
     </div>
   )
 }
 
-export default Home
+export default Homelogin
