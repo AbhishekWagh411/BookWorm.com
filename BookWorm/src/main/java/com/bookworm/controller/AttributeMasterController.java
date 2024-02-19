@@ -1,4 +1,4 @@
-package com.bookworm.controller;
+package com.bookworm.controllers;
 
 import java.util.List;
 
@@ -15,9 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bookworm.entity.AttributeMaster;
-import com.bookworm.service.AttributeMasterInterface;
-
+import com.bookworm.entities.AttributeMaster;
+import com.bookworm.services.AttributeMasterInterface;
 
 @RestController
 @CrossOrigin("*")
