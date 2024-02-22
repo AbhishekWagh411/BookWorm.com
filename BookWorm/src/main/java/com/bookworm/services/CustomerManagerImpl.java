@@ -5,10 +5,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.bookworm.dao.ICustomerRepository;
 import com.bookworm.entities.Customer;
+import com.bookworm.dao.ICustomerRepository;
+
 
 @Service
 public class CustomerManagerImpl implements CustomerManager
@@ -22,14 +24,15 @@ public class CustomerManagerImpl implements CustomerManager
 	}
 	
 	@Override
-	public boolean loginUser(String email, String password) {
-		boolean bool = false;
-		List<Customer> customerList = repository.loginUser(email, password);
-		for(Customer cust: customerList ) {
-			if(cust.getemail().equals(email) && cust.getpassword().equals(password))
-				bool = true;
+	public Customer loginUser(String email, String password) {
+		
+		Customer cust= repository.loginUser();
+		if(cust.getemail().equals(email)&& cust.getpassword().equals(password)) {
+		return cust;
+		}else {
+			return null;
 		}
-		return bool;
+		
 	}
 		
 

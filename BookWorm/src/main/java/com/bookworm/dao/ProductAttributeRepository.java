@@ -7,10 +7,10 @@ import org.springframework.data.repository.query.Param;
 
 import com.bookworm.entities.ProductAttribute;
 
-public interface ProductAttributeRepository extends JpaRepository<ProductAttribute,Integer>
+public interface ProductAttributeRepository extends JpaRepository<ProductAttribute,Long>
 {
 	@Modifying
 	@Query("update ProductAttribute set attributeValue=:attributeValue where prodAttId=:prodAttId")
-	void update(@Param ("attributeValue") String attributevalue,@Param("prodAttId")int id);
+	void update(@Param ("attributeValue") String attributevalue,@Param("prodAttId")long id);
 
 }

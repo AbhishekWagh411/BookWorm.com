@@ -1,4 +1,4 @@
-package com.bookworm.controller;
+package com.bookworm.controllers;
 
 import java.util.List;
 
@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bookworm.entity.Customer;
-import com.bookworm.entity.User;
+import com.bookworm.entities.Customer;
+import com.bookworm.entities.User;
 import com.bookworm.security.JwtResponse;
-import com.bookworm.service.CustomUserDetailsService;
-import com.bookworm.service.CustomerManager;
-import com.bookworm.service.JwtUtil;
+import com.bookworm.services.CustomUserDetailsService;
+import com.bookworm.services.CustomerManager;
+import com.bookworm.services.JwtUtil;
 
 
 @RestController  
@@ -39,14 +39,14 @@ public class CustomerController {
 	 }
 	
 	@PostMapping(value = "api/Login")
-	public ResponseEntity<JwtResponse> checkCustomer(@RequestBody User user1) {
+	public ResponseEntity<Customer> checkCustomer(@RequestBody User user1) {
 		Customer customerResponse = manager.loginUser(user1.getEmail(), user1.getPassword());
 		
 		if(customerResponse!=null) {
 			customUserDetailsService.setPassword(user1.getPassword());
-			UserDetails userDetails= customUserDetailsService.loadUserByUsername(user1.getEmail());
-			String token= jwtUtil.generateToken(userDetails, customerResponse);
-			return ResponseEntity.ok(new JwtResponse(token));
+//			UserDetails userDetails= customUserDetailsService.loadUserByUsername(user1.getEmail());
+//			String token= jwtUtil.generateToken(userDetails, customerResponse);
+			return ResponseEntity.ok(customerResponse);
 		}
 		else {
 			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();

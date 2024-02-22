@@ -14,8 +14,8 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.bookworm.service.CustomUserDetailsService;
-import com.bookworm.service.JwtUtil;
+import com.bookworm.services.CustomUserDetailsService;
+import com.bookworm.services.JwtUtil;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

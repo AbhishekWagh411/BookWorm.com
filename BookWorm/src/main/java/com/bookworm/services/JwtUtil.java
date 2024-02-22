@@ -1,4 +1,4 @@
-package com.bookworm.service;
+package com.bookworm.services;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
-import com.bookworm.entity.Customer;
+import com.bookworm.entities.Customer;
 
 import javax.crypto.SecretKey;
 import java.util.Date;
@@ -40,7 +40,7 @@ public class JwtUtil {
 
     public String generateToken(UserDetails userDetails,Customer customer) {
         Map<String, Object> claims = new HashMap<>();
-        claims.put("id", customer.getcustomer_id());
+        claims.put("id", customer);
         return createToken(claims, userDetails.getUsername());
     }
 

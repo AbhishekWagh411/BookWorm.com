@@ -30,16 +30,19 @@ public class ProductService implements IProductService {
 	}
 
 	@Override
-	public Optional<Product> getProductById(long id) {
-		Optional<Product> prod = productRepo.findById(id);
-		if(!prod.isPresent())
-			System.out.println("Product is Invalid");
+	public List<Product> getProductByType(long id) {
+		List<Product> prod = productRepo.getByTypeID(id);
 		return prod;
 	}
 	
 	@Override
-	public List<Product> getProductsByType(long typeid, long langId) {
-		return productRepo.getByTypeId(typeid, langId);
+	public List<Product> getProductsByTypeandLang(long typeid, long langId) {
+		return productRepo.getByTypeIdandLangID(typeid, langId);
+	}
+
+	@Override
+	public Product getProductById(long id) {
+		return productRepo.getById(id);
 	}
 
 }

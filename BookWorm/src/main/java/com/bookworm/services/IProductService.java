@@ -9,7 +9,9 @@ public interface IProductService {
 	
 	List<Product> getAllProducts();
 	
-	Optional<Product> getProductById(long id);
+	Product getProductById(long id);
 	
-	List<Product> getProductsByType(long typeId, long lanId);
+	List<Product> getProductByType(long id);
+	
+	List<Product> getProductsByTypeandLang(long typeId, long lanId);
 }

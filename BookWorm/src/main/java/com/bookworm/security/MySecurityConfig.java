@@ -10,7 +10,7 @@ import org.springframework.security.web.DefaultSecurityFilterChain;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import com.bookworm.service.CustomUserDetailsService;
+import com.bookworm.services.CustomUserDetailsService;
 
 
 @Configuration
@@ -31,7 +31,7 @@ public class MySecurityConfig
 
     	 http.csrf(csrf -> csrf.disable())
          .authorizeHttpRequests(auth -> auth
-             .requestMatchers("api/SignUp","api/Login","/api/products","/getProducts","/getAllBeneficiary").permitAll()
+             .requestMatchers("api/SignUp","/api/products","/getProducts","/public/token","/api/attribute/**","/api/get/{Id}").permitAll()
              .anyRequest().authenticated()
          );
     	 

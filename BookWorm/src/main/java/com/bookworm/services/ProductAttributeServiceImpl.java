@@ -20,7 +20,7 @@ public class ProductAttributeServiceImpl implements ProductAttributeService {
 	    }
 
 	    @Override
-	    public Optional<ProductAttribute> getProductAttributeById(int id) {
+	    public Optional<ProductAttribute> getProductAttributeById(long id) {
 	        return productAttributeRepository.findById(id);
 	    }
 
@@ -32,12 +32,12 @@ public class ProductAttributeServiceImpl implements ProductAttributeService {
 	    }
 
 	    @Override
-	    public void updateProductAttribute(int id, ProductAttribute updatedProductAttribute) {
+	    public void updateProductAttribute(long id, ProductAttribute updatedProductAttribute) {
 	               productAttributeRepository.update(updatedProductAttribute.getAttributeValue(),id);
 	    }
 
 	    @Override
-	    public void deleteProductAttribute(int id) {
+	    public void deleteProductAttribute(long id) {
 	        productAttributeRepository.deleteById(id);
 	    }
 }

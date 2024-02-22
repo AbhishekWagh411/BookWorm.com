@@ -1,4 +1,4 @@
-package com.bookworm.controller;
+package com.bookworm.controllers;
 
 import java.util.List;
 import java.util.Optional;
@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bookworm.entity.BeneficiaryMaster;
-import com.bookworm.service.BeneficiaryManager;
+import com.bookworm.entities.BeneficiaryMaster;
+import com.bookworm.services.BeneficiaryManager;
 
 @RestController
 @CrossOrigin("*")

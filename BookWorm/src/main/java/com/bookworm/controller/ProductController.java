@@ -36,16 +36,16 @@ public class ProductController {
 		return productList;
 	}
 	
-	@GetMapping("/getProduct/{id}")
-	public Optional<Product> getProductById(@PathVariable long id){
+	@GetMapping("/getProductsByType/{typeid}")
+	public List<Product> getProductByTypeId(@PathVariable("typeid") long id){
 		
-		Optional<Product> product = productService.getProductById(id);
+		List<Product> product = productService.getProductByType(id);
 		return product;
 	}
 	
-	@GetMapping("/getProductByType/{typeId}/{langId}")
+	@GetMapping("/getProductsByTypeandLang/{typeId}/{langId}")
 	public List<Product> getProductBytype(@PathVariable long typeId, @PathVariable long langId){
-		List<Product> productList = productService.getProductsByType(typeId, langId);
+		List<Product> productList = productService.getProductsByTypeandLang(typeId, langId);
 		return productList;
 	}
 	
